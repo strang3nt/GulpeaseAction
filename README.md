@@ -32,3 +32,5 @@ jobs:
         name: Documents
         path: <where the pdf files are stored>
 ```
+
+_Repository opportunamente modificata per monitorare la documentazione del seguente progetto:_ <https://github.com/CodeOfDutyJS/documentazione>
