@@ -1,6 +1,5 @@
 #!/bin/bash
-# cd /github/workspace
-# cd $INPUT_DIRECTORY
+cd /github/workspace
 mkdir Gulpease
 wget studio-di-fattibilita.pdf https://github.com/CodeOfDutyJS/documentazione/releases/download/wip%2Fstudio-di-fattibilita/studio-di-fattibilita.pdf 
 wget norme-di-progetto.pdf https://github.com/CodeOfDutyJS/documentazione/releases/download/wip%2Fnorme-di-progetto/norme-di-progetto.pdf
@@ -12,9 +11,7 @@ while IFS= read -r document || [ -n "$document" ]
 do
     pdftotext $document
     python gulpease.py ${document%.*}.txt > Gulpease/${document%.*}-eval.txt
-    echo 'GULP_'"${document%.*}"
-    echo
-    sed -e 's/GULP_'"${document%.*}"'/'"$(cat Gulpease/${document%.*}-eval.txt)"'/' -i README.md
+    sed -e 's/<!-- GULP_'"${document%.*}"' -->.*<!-- end -->/<!-- GULP_'"${document%.*}"' -->'"$(cat Gulpease/${document%.*}-eval.txt)"' al '"$(date +'%Y-%m-%d')"'<!-- end -->/' -i README.md
 done < "Gulpease/pdfList.txt"
 
 rm *.txt
