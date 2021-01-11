@@ -7,7 +7,7 @@ wget norme-di-progetto.pdf https://github.com/CodeOfDutyJS/documentazione/releas
 wget analisi-dei-requisiti.pdf https://github.com/CodeOfDutyJS/documentazione/releases/download/wip%2Fanalisi-dei-requisiti/analisi-dei-requisiti.pdf
 wget piano-di-qualifica.pdf https://github.com/CodeOfDutyJS/documentazione/releases/download/wip%2Fpiano-di-qualifica/piano-di-qualifica.pdf
 wget piano-di-progetto.pdf https://github.com/CodeOfDutyJS/documentazione/releases/download/wip%2Fpiano-di-progetto/piano-di-progetto.pdf
-ls *.pdf > Gulpease/pdfList.txt
+ls *.pdf > pdfList.txt
 while IFS= read -r document || [ -n "$document" ]
 do
     pdftotext $document
