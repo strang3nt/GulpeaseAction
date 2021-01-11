@@ -13,7 +13,7 @@ do
     pdftotext $document
     python /gulpease.py ${document%.*}.txt > ${document%.*}-eval.txt
     cat ${document%.*}-eval.txt
-    sed -e 's/<!-- GULP_'"${document%.*}"' -->.*<!-- end -->/<!-- GULP_'"${document%.*}"' -->'"$(cat Gulpease/${document%.*}-eval.txt)"' al '"$(date +'%Y-%m-%d')"'<!-- end -->/' -i ../README.md
+    sed -e 's/<!-- GULP_'"${document%.*}"' -->.*<!-- end -->/<!-- GULP_'"${document%.*}"' -->'"$(cat ${document%.*}-eval.txt)"' al '"$(date +'%Y-%m-%d')"'<!-- end -->/' -i ../README.md
 done < "pdfList.txt"
 tree .
 cd ..
