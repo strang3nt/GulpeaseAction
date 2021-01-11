@@ -14,8 +14,7 @@ do
     cat Gulpease/${document%.*}-eval.txt
     sed -e 's/<!-- GULP_'"${document%.*}"' -->.*<!-- end -->/<!-- GULP_'"${document%.*}"' -->'"$(cat Gulpease/${document%.*}-eval.txt)"' al '"$(date +'%Y-%m-%d')"'<!-- end -->/' -i README.md
 done < "Gulpease/pdfList.txt"
-cat Gulpease/pdfList.txt
-cat README.md
+tree .
 rm *.txt
 rm *.pdf
 rm -r Gulpease
