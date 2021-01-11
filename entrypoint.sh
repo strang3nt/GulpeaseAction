@@ -11,7 +11,7 @@ ls *.pdf > pdfList.txt
 while IFS= read -r document || [ -n "$document" ]
 do
     pdftotext $document
-    python ../gulpease.py ${document%.*}.txt > Gulpease/${document%.*}-eval.txt
+    python ../gulpease.py ${document%.*}.txt > ${document%.*}-eval.txt
     cat Gulpease/${document%.*}-eval.txt
     sed -e 's/<!-- GULP_'"${document%.*}"' -->.*<!-- end -->/<!-- GULP_'"${document%.*}"' -->'"$(cat Gulpease/${document%.*}-eval.txt)"' al '"$(date +'%Y-%m-%d')"'<!-- end -->/' -i ../README.md
 done < "pdfList.txt"
